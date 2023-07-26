@@ -230,6 +230,27 @@ public class Database {
         private String username;
         private String password;
 
+        // setters for each parameter
+        public DatabaseBuilder host(String host) {
+            this.host = host;
+            return this;
+        }
+
+        public DatabaseBuilder port(int port) {
+            this.port = port;
+            return this;
+        }
+
+        public DatabaseBuilder username(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public DatabaseBuilder password(String password) {
+            this.password = password;
+            return this;
+        }
+
         public Database build() {
             Database database = new Database();
             database.host = this.host;
@@ -248,6 +269,12 @@ The above code now allows us to create a Database object using the DatabaseBuild
 Database database = new Database.DatabaseBuilder()
     .host("localhost")
     .port(3306)
+    .username("root")
+    .password("password")
+    .build();
+
+// this will also work if host and port is not required to be set
+Database database = new Database.DatabaseBuilder()
     .username("root")
     .password("password")
     .build();
